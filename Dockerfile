@@ -1,23 +1,13 @@
-flask
-flask_restful
-aiohttp
-aiofiles
-bs4
-googlesearch-python==1.0.1
-gitpython
-humanize
-httpx
-heroku3
-requests
-motor>=3.3.2
-opencv-python-headless
-pyrogram==2.0.106
-pymongo>=4.6.3
-python-dotenv
-pymediainfo
-prettytable
-git+https://github.com/Itz-fork/py-trans.git
-reportlab
+FROM nikolaik/python-nodejs:python3.9-nodejs18
+RUN apt-get update -y && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends ffmpeg \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+COPY . /app/
+WORKDIR /app/
+RUN pip3 install --upgrade pip
+RUN pip3 install -r requirements.txt
+CMD python3 -m RAUSHAN
 svglib
 speedtest-cli==2.1.3
 tgcrypto 
