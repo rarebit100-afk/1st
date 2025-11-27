@@ -1,28 +1,25 @@
-FROM python:3.11.4-slim-buster
-
-RUN sed -i 's|http://deb.debian.org/debian|http://archive.debian.org/debian|g' /etc/apt/sources.list && \
-    sed -i 's|http://security.debian.org/debian-security|http://archive.debian.org/debian-security|g' /etc/apt/sources.list && \
-    echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until
-
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y \
-        git \
-        curl \
-        python3-pip \
-        ffmpeg \
-        pkg-config \
-        libcairo2-dev \
-        gcc \
-        g++ \
-        make \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN pip3 install --upgrade pip setuptools wheel
-
-COPY . /app/
-WORKDIR /app/
-
-RUN pip3 install -U -r requirements.txt
-
-CMD ["bash", "start.sh"]
+flask
+flask_restful
+aiohttp
+aiofiles
+bs4
+googlesearch-python==1.0.1
+gitpython
+humanize
+httpx
+heroku3
+requests
+motor>=3.3.2
+opencv-python-headless
+pyrogram==2.0.106
+pymongo>=4.6.3
+python-dotenv
+pymediainfo
+prettytable
+git+https://github.com/Itz-fork/py-trans.git
+reportlab
+svglib
+speedtest-cli==2.1.3
+tgcrypto 
+telegraph
+uwuify
